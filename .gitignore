@@ -1,5 +1,7 @@
 .idea
 .git
+magedock/nginx/logs/access.log
+magedock/nginx/logs/error.log
 site/.buildpath
 site/.cache
 site/.metadata
