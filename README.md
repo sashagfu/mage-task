@@ -11,3 +11,9 @@ Get PMA IP address
 ```
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mg-pma
 ```
+
+Run a command in a running workspace container
+
+```
+docker exec -it mg-php bash
+```

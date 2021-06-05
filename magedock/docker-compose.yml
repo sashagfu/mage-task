@@ -39,7 +39,7 @@ services:
     build: ./php
     container_name: mg-php
     volumes:
-      - ~/Projects/mgtask/site:/var/www
+      - ~/Projects/mage-task/site:/var/www
     links:
       - mysql
 
@@ -47,7 +47,7 @@ services:
     image: nginx:latest
     volumes:
       - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
-      - ~/Projects/mgtask/site:/var/www
+      - ~/Projects/mage-task/site:/var/www
       - ./nginx/logs:/var/log/nginx/
     ports:
       - "80:80"
