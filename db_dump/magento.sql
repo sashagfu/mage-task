@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: mysql:3306
--- Час створення: Чрв 05 2021 р., 22:03
+-- Час створення: Чрв 06 2021 р., 20:43
 -- Версія сервера: 5.7.34
 -- Версія PHP: 7.4.20
 
@@ -56,6 +56,13 @@ CREATE TABLE `admin_analytics_usage_version_log` (
   `last_viewed_in_version` varchar(50) NOT NULL COMMENT 'Viewer last viewed on product version'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Admin Notification Viewer Log Table';
 
+--
+-- Дамп даних таблиці `admin_analytics_usage_version_log`
+--
+
+INSERT INTO `admin_analytics_usage_version_log` (`id`, `last_viewed_in_version`) VALUES
+(1, '2.4.2-p1');
+
 -- --------------------------------------------------------
 
 --
@@ -88,6 +95,13 @@ CREATE TABLE `admin_system_messages` (
   `severity` smallint(5) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Problem type',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Create date'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Admin System Messages';
+
+--
+-- Дамп даних таблиці `admin_system_messages`
+--
+
+INSERT INTO `admin_system_messages` (`identity`, `severity`, `created_at`) VALUES
+('da332d712f3215b9b94bfa268c398323', 2, '2021-06-05 22:11:30');
 
 -- --------------------------------------------------------
 
@@ -123,7 +137,7 @@ CREATE TABLE `admin_user` (
 --
 
 INSERT INTO `admin_user` (`user_id`, `firstname`, `lastname`, `email`, `username`, `password`, `created`, `modified`, `logdate`, `lognum`, `reload_acl_flag`, `is_active`, `extra`, `rp_token`, `rp_token_created_at`, `interface_locale`, `failures_num`, `first_failure`, `lock_expires`, `refresh_token`) VALUES
-(1, 'admin', 'admin', 'admin@admin.com', 'admin', '0cba738c41dff73130198d83bbf9dab6627261c81606ba697179120d21c585dd:eNkE2cE11Uw2mNJNIE1s7Dl2dxIXleRg:3_32_2_67108864', '2021-06-05 21:55:56', '2021-06-05 21:55:56', NULL, 0, 0, 1, NULL, NULL, NULL, 'en_US', 0, NULL, NULL, NULL);
+(1, 'admin', 'admin', 'admin@admin.com', 'admin', '0cba738c41dff73130198d83bbf9dab6627261c81606ba697179120d21c585dd:eNkE2cE11Uw2mNJNIE1s7Dl2dxIXleRg:3_32_2_67108864', '2021-06-05 21:55:56', '2021-06-06 20:39:46', '2021-06-06 20:39:46', 5, 0, 1, NULL, NULL, NULL, 'en_US', 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -151,6 +165,17 @@ CREATE TABLE `admin_user_session` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Update Time',
   `ip` varchar(15) NOT NULL COMMENT 'Remote user IP'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Admin User sessions table';
+
+--
+-- Дамп даних таблиці `admin_user_session`
+--
+
+INSERT INTO `admin_user_session` (`id`, `session_id`, `user_id`, `status`, `created_at`, `updated_at`, `ip`) VALUES
+(1, '88f450abe06e8c176ba06cae265640e4', 1, 1, '2021-06-05 22:08:30', '2021-06-05 22:11:55', '172.19.0.1'),
+(2, '92989ac854409a540bfb629b3a1de4a6', 1, 1, '2021-06-06 07:30:45', '2021-06-06 07:42:45', '172.19.0.1'),
+(3, 'e5800cfeea83c1327c94e661c96fdcb1', 1, 1, '2021-06-06 09:23:51', '2021-06-06 09:25:54', '172.19.0.1'),
+(4, '3c9310dcdf90b7b398234a3e04f59e8d', 1, 1, '2021-06-06 20:13:00', '2021-06-06 20:24:32', '172.19.0.1'),
+(5, 'd09570af5e55d5644c7b28a780a3ee04', 1, 1, '2021-06-06 20:39:46', '2021-06-06 20:40:44', '172.19.0.1');
 
 -- --------------------------------------------------------
 
@@ -2122,6 +2147,13 @@ CREATE TABLE `cms_block` (
   `is_active` smallint(6) NOT NULL DEFAULT '1' COMMENT 'Is Block Active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CMS Block Table';
 
+--
+-- Дамп даних таблиці `cms_block`
+--
+
+INSERT INTO `cms_block` (`block_id`, `title`, `identifier`, `content`, `creation_time`, `update_time`, `is_active`) VALUES
+(1, 'MyTableBlock', 'myTableBlock', '<table class=\"my-table-block\" style=\"border-collapse: collapse; width: 100%;\" border=\"1\">\r\n<tbody>\r\n<tr>\r\n<td style=\"width: 50%;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&nbsp;</td>\r\n<td style=\"width: 50%;\">t enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 50%;\">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.&nbsp;</td>\r\n<td style=\"width: 50%;\">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>\r\n</tr>\r\n</tbody>\r\n</table>', '2021-06-06 20:23:10', '2021-06-06 20:40:44', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -2132,6 +2164,13 @@ CREATE TABLE `cms_block_store` (
   `block_id` smallint(6) NOT NULL,
   `store_id` smallint(5) UNSIGNED NOT NULL COMMENT 'Store ID'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CMS Block To Store Linkage Table';
+
+--
+-- Дамп даних таблиці `cms_block_store`
+--
+
+INSERT INTO `cms_block_store` (`block_id`, `store_id`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -2240,7 +2279,9 @@ INSERT INTO `core_config_data` (`config_id`, `scope`, `scope_id`, `path`, `value
 (25, 'default', 0, 'connector_automation/review_settings/allow_non_subscribers', '1', '2021-06-05 21:55:54'),
 (26, 'default', 0, 'connector_configuration/abandoned_carts/allow_non_subscribers', '1', '2021-06-05 21:55:54'),
 (27, 'default', 0, 'sync_settings/addressbook/allow_non_subscribers', '1', '2021-06-05 21:55:54'),
-(28, 'default', 0, 'connector_developer_settings/system_alerts/user_roles', '1', '2021-06-05 21:55:54');
+(28, 'default', 0, 'connector_developer_settings/system_alerts/user_roles', '1', '2021-06-05 21:55:54'),
+(29, 'default', 0, 'admin/usage/enabled', '1', '2021-06-05 22:11:56'),
+(30, 'stores', 1, 'design/theme/theme_id', '4', '2021-06-06 07:43:00');
 
 -- --------------------------------------------------------
 
@@ -2797,7 +2838,7 @@ CREATE TABLE `design_config_grid_flat` (
 INSERT INTO `design_config_grid_flat` (`entity_id`, `store_website_id`, `store_group_id`, `store_id`, `theme_theme_id`) VALUES
 (0, NULL, NULL, NULL, ''),
 (1, 1, NULL, NULL, ''),
-(2, 1, 1, 1, '');
+(2, 1, 1, 1, '4');
 
 -- --------------------------------------------------------
 
@@ -6096,7 +6137,7 @@ CREATE TABLE `indexer_state` (
 --
 
 INSERT INTO `indexer_state` (`state_id`, `indexer_id`, `status`, `updated`, `hash_config`) VALUES
-(1, 'design_config_grid', 'valid', '2021-06-05 21:55:55', '1ef62b92fb94aeca9060d46fa9fd5493'),
+(1, 'design_config_grid', 'valid', '2021-06-06 19:18:08', '1ef62b92fb94aeca9060d46fa9fd5493'),
 (2, 'customer_grid', 'valid', '2021-06-05 21:55:56', 'bd7d9491430422b669670418d2619f05'),
 (3, 'catalog_category_product', 'invalid', '2021-06-05 21:55:49', '795dd61d21213ce4150c69256fd3332a'),
 (4, 'catalog_product_category', 'invalid', '2021-06-05 21:55:49', 'c9e71f5b5c5b5e491e2ceba84335552e'),
@@ -7152,7 +7193,7 @@ CREATE TABLE `queue_poison_pill` (
 --
 
 INSERT INTO `queue_poison_pill` (`version`) VALUES
-('version-60bbf2e04fbad');
+('version-60bbf6acea1a4');
 
 -- --------------------------------------------------------
 
@@ -9469,6 +9510,7 @@ INSERT INTO `setup_module` (`module`, `schema_version`, `data_version`) VALUES
 ('Magento_ComposerRootUpdatePlugin', '0.1.0', '0.1.0'),
 ('Magento_GoogleShoppingAds', '4.0.1', '4.0.1'),
 ('Magento_Securitytxt', '1.0.0', '1.0.0'),
+('My_Randomtext', '1.0.0', '1.0.0'),
 ('PayPal_Braintree', '4.0.3', '4.0.3'),
 ('Vertex_AddressValidation', '100.5.0', '100.5.0'),
 ('Yotpo_Yotpo', '3.1.3', '3.1.3');
@@ -9706,280 +9748,6 @@ CREATE TABLE `tax_order_aggregated_updated` (
 -- --------------------------------------------------------
 
 --
--- Структура таблиці `tfa_country_codes`
---
-
-CREATE TABLE `tfa_country_codes` (
-  `country_id` int(10) UNSIGNED NOT NULL COMMENT 'TFA admin user ID',
-  `code` varchar(2) NOT NULL COMMENT 'Country code',
-  `name` varchar(255) NOT NULL COMMENT 'Country name',
-  `dial_code` varchar(255) NOT NULL COMMENT 'Prefix'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='tfa_country_codes';
-
---
--- Дамп даних таблиці `tfa_country_codes`
---
-
-INSERT INTO `tfa_country_codes` (`country_id`, `code`, `name`, `dial_code`) VALUES
-(1, 'IL', 'Israel', '+972'),
-(2, 'AF', 'Afghanistan', '+93'),
-(3, 'AL', 'Albania', '+355'),
-(4, 'DZ', 'Algeria', '+213'),
-(5, 'AS', 'AmericanSamoa', '+1 684'),
-(6, 'AD', 'Andorra', '+376'),
-(7, 'AO', 'Angola', '+244'),
-(8, 'AI', 'Anguilla', '+1 264'),
-(9, 'AG', 'Antigua and Barbuda', '+1268'),
-(10, 'AR', 'Argentina', '+54'),
-(11, 'AM', 'Armenia', '+374'),
-(12, 'AW', 'Aruba', '+297'),
-(13, 'AU', 'Australia', '+61'),
-(14, 'AT', 'Austria', '+43'),
-(15, 'AZ', 'Azerbaijan', '+994'),
-(16, 'BS', 'Bahamas', '+1 242'),
-(17, 'BH', 'Bahrain', '+973'),
-(18, 'BD', 'Bangladesh', '+880'),
-(19, 'BB', 'Barbados', '+1 246'),
-(20, 'BY', 'Belarus', '+375'),
-(21, 'BE', 'Belgium', '+32'),
-(22, 'BZ', 'Belize', '+501'),
-(23, 'BJ', 'Benin', '+229'),
-(24, 'BM', 'Bermuda', '+1 441'),
-(25, 'BT', 'Bhutan', '+975'),
-(26, 'BA', 'Bosnia and Herzegovina', '+387'),
-(27, 'BW', 'Botswana', '+267'),
-(28, 'BR', 'Brazil', '+55'),
-(29, 'IO', 'British Indian Ocean Territory', '+246'),
-(30, 'BG', 'Bulgaria', '+359'),
-(31, 'BF', 'Burkina Faso', '+226'),
-(32, 'BI', 'Burundi', '+257'),
-(33, 'KH', 'Cambodia', '+855'),
-(34, 'CM', 'Cameroon', '+237'),
-(35, 'CA', 'Canada', '+1'),
-(36, 'CV', 'Cape Verde', '+238'),
-(37, 'KY', 'Cayman Islands', '+ 345'),
-(38, 'CF', 'Central African Republic', '+236'),
-(39, 'TD', 'Chad', '+235'),
-(40, 'CL', 'Chile', '+56'),
-(41, 'CN', 'China', '+86'),
-(42, 'CX', 'Christmas Island', '+61'),
-(43, 'CO', 'Colombia', '+57'),
-(44, 'KM', 'Comoros', '+269'),
-(45, 'CG', 'Congo', '+242'),
-(46, 'CK', 'Cook Islands', '+682'),
-(47, 'CR', 'Costa Rica', '+506'),
-(48, 'HR', 'Croatia', '+385'),
-(49, 'CU', 'Cuba', '+53'),
-(50, 'CY', 'Cyprus', '+537'),
-(51, 'CZ', 'Czech Republic', '+420'),
-(52, 'DK', 'Denmark', '+45'),
-(53, 'DJ', 'Djibouti', '+253'),
-(54, 'DM', 'Dominica', '+1 767'),
-(55, 'DO', 'Dominican Republic', '+1 849'),
-(56, 'EC', 'Ecuador', '+593'),
-(57, 'EG', 'Egypt', '+20'),
-(58, 'SV', 'El Salvador', '+503'),
-(59, 'GQ', 'Equatorial Guinea', '+240'),
-(60, 'ER', 'Eritrea', '+291'),
-(61, 'EE', 'Estonia', '+372'),
-(62, 'ET', 'Ethiopia', '+251'),
-(63, 'FO', 'Faroe Islands', '+298'),
-(64, 'FJ', 'Fiji', '+679'),
-(65, 'FI', 'Finland', '+358'),
-(66, 'FR', 'France', '+33'),
-(67, 'GF', 'French Guiana', '+594'),
-(68, 'PF', 'French Polynesia', '+689'),
-(69, 'GA', 'Gabon', '+241'),
-(70, 'GM', 'Gambia', '+220'),
-(71, 'GE', 'Georgia', '+995'),
-(72, 'DE', 'Germany', '+49'),
-(73, 'GH', 'Ghana', '+233'),
-(74, 'GI', 'Gibraltar', '+350'),
-(75, 'GR', 'Greece', '+30'),
-(76, 'GL', 'Greenland', '+299'),
-(77, 'GD', 'Grenada', '+1 473'),
-(78, 'GP', 'Guadeloupe', '+590'),
-(79, 'GU', 'Guam', '+1 671'),
-(80, 'GT', 'Guatemala', '+502'),
-(81, 'GN', 'Guinea', '+224'),
-(82, 'GW', 'Guinea-Bissau', '+245'),
-(83, 'GY', 'Guyana', '+595'),
-(84, 'HT', 'Haiti', '+509'),
-(85, 'HN', 'Honduras', '+504'),
-(86, 'HU', 'Hungary', '+36'),
-(87, 'IS', 'Iceland', '+354'),
-(88, 'IN', 'India', '+91'),
-(89, 'ID', 'Indonesia', '+62'),
-(90, 'IQ', 'Iraq', '+964'),
-(91, 'IE', 'Ireland', '+353'),
-(92, 'IL', 'Israel', '+972'),
-(93, 'IT', 'Italy', '+39'),
-(94, 'JM', 'Jamaica', '+1 876'),
-(95, 'JP', 'Japan', '+81'),
-(96, 'JO', 'Jordan', '+962'),
-(97, 'KZ', 'Kazakhstan', '+7 7'),
-(98, 'KE', 'Kenya', '+254'),
-(99, 'KI', 'Kiribati', '+686'),
-(100, 'KW', 'Kuwait', '+965'),
-(101, 'KG', 'Kyrgyzstan', '+996'),
-(102, 'LV', 'Latvia', '+371'),
-(103, 'LB', 'Lebanon', '+961'),
-(104, 'LS', 'Lesotho', '+266'),
-(105, 'LR', 'Liberia', '+231'),
-(106, 'LI', 'Liechtenstein', '+423'),
-(107, 'LT', 'Lithuania', '+370'),
-(108, 'LU', 'Luxembourg', '+352'),
-(109, 'MG', 'Madagascar', '+261'),
-(110, 'MW', 'Malawi', '+265'),
-(111, 'MY', 'Malaysia', '+60'),
-(112, 'MV', 'Maldives', '+960'),
-(113, 'ML', 'Mali', '+223'),
-(114, 'MT', 'Malta', '+356'),
-(115, 'MH', 'Marshall Islands', '+692'),
-(116, 'MQ', 'Martinique', '+596'),
-(117, 'MR', 'Mauritania', '+222'),
-(118, 'MU', 'Mauritius', '+230'),
-(119, 'YT', 'Mayotte', '+262'),
-(120, 'MX', 'Mexico', '+52'),
-(121, 'MC', 'Monaco', '+377'),
-(122, 'MN', 'Mongolia', '+976'),
-(123, 'ME', 'Montenegro', '+382'),
-(124, 'MS', 'Montserrat', '+1664'),
-(125, 'MA', 'Morocco', '+212'),
-(126, 'MM', 'Myanmar', '+95'),
-(127, 'NA', 'Namibia', '+264'),
-(128, 'NR', 'Nauru', '+674'),
-(129, 'NP', 'Nepal', '+977'),
-(130, 'NL', 'Netherlands', '+31'),
-(131, 'AN', 'Netherlands Antilles', '+599'),
-(132, 'NC', 'New Caledonia', '+687'),
-(133, 'NZ', 'New Zealand', '+64'),
-(134, 'NI', 'Nicaragua', '+505'),
-(135, 'NE', 'Niger', '+227'),
-(136, 'NG', 'Nigeria', '+234'),
-(137, 'NU', 'Niue', '+683'),
-(138, 'NF', 'Norfolk Island', '+672'),
-(139, 'MP', 'Northern Mariana Islands', '+1 670'),
-(140, 'NO', 'Norway', '+47'),
-(141, 'OM', 'Oman', '+968'),
-(142, 'PK', 'Pakistan', '+92'),
-(143, 'PW', 'Palau', '+680'),
-(144, 'PA', 'Panama', '+507'),
-(145, 'PG', 'Papua New Guinea', '+675'),
-(146, 'PY', 'Paraguay', '+595'),
-(147, 'PE', 'Peru', '+51'),
-(148, 'PH', 'Philippines', '+63'),
-(149, 'PL', 'Poland', '+48'),
-(150, 'PT', 'Portugal', '+351'),
-(151, 'PR', 'Puerto Rico', '+1 939'),
-(152, 'QA', 'Qatar', '+974'),
-(153, 'RO', 'Romania', '+40'),
-(154, 'RW', 'Rwanda', '+250'),
-(155, 'WS', 'Samoa', '+685'),
-(156, 'SM', 'San Marino', '+378'),
-(157, 'SA', 'Saudi Arabia', '+966'),
-(158, 'SN', 'Senegal', '+221'),
-(159, 'RS', 'Serbia', '+381'),
-(160, 'SC', 'Seychelles', '+248'),
-(161, 'SL', 'Sierra Leone', '+232'),
-(162, 'SG', 'Singapore', '+65'),
-(163, 'SK', 'Slovakia', '+421'),
-(164, 'SI', 'Slovenia', '+386'),
-(165, 'SB', 'Solomon Islands', '+677'),
-(166, 'ZA', 'South Africa', '+27'),
-(167, 'GS', 'South Georgia and the South Sandwich Islands', '+500'),
-(168, 'ES', 'Spain', '+34'),
-(169, 'LK', 'Sri Lanka', '+94'),
-(170, 'SD', 'Sudan', '+249'),
-(171, 'SR', 'Suriname', '+597'),
-(172, 'SZ', 'Swaziland', '+268'),
-(173, 'SE', 'Sweden', '+46'),
-(174, 'CH', 'Switzerland', '+41'),
-(175, 'TJ', 'Tajikistan', '+992'),
-(176, 'TH', 'Thailand', '+66'),
-(177, 'TG', 'Togo', '+228'),
-(178, 'TK', 'Tokelau', '+690'),
-(179, 'TO', 'Tonga', '+676'),
-(180, 'TT', 'Trinidad and Tobago', '+1 868'),
-(181, 'TN', 'Tunisia', '+216'),
-(182, 'TR', 'Turkey', '+90'),
-(183, 'TM', 'Turkmenistan', '+993'),
-(184, 'TC', 'Turks and Caicos Islands', '+1 649'),
-(185, 'TV', 'Tuvalu', '+688'),
-(186, 'UG', 'Uganda', '+256'),
-(187, 'UA', 'Ukraine', '+380'),
-(188, 'AE', 'United Arab Emirates', '+971'),
-(189, 'GB', 'United Kingdom', '+44'),
-(190, 'US', 'United States', '+1'),
-(191, 'UY', 'Uruguay', '+598'),
-(192, 'UZ', 'Uzbekistan', '+998'),
-(193, 'VU', 'Vanuatu', '+678'),
-(194, 'WF', 'Wallis and Futuna', '+681'),
-(195, 'YE', 'Yemen', '+967'),
-(196, 'ZM', 'Zambia', '+260'),
-(197, 'ZW', 'Zimbabwe', '+263'),
-(198, 'AX', 'land Islands', ''),
-(199, 'BO', 'Bolivia, Plurinational State of', '+591'),
-(200, 'BN', 'Brunei Darussalam', '+673'),
-(201, 'CC', 'Cocos (Keeling) Islands', '+61'),
-(202, 'CD', 'Congo, The Democratic Republic of the', '+243'),
-(203, 'CI', 'Cote d\'Ivoire', '+225'),
-(204, 'FK', 'Falkland Islands (Malvinas)', '+500'),
-(205, 'GG', 'Guernsey', '+44'),
-(206, 'VA', 'Holy See (Vatican City State)', '+379'),
-(207, 'HK', 'Hong Kong', '+852'),
-(208, 'IR', 'Iran, Islamic Republic of', '+98'),
-(209, 'IM', 'Isle of Man', '+44'),
-(210, 'JE', 'Jersey', '+44'),
-(211, 'KP', 'Korea, Democratic People\'s Republic of', '+850'),
-(212, 'KR', 'Korea, Republic of', '+82'),
-(213, 'LA', 'Lao People\'s Democratic Republic', '+856'),
-(214, 'LY', 'Libyan Arab Jamahiriya', '+218'),
-(215, 'MO', 'Macao', '+853'),
-(216, 'MK', 'Macedonia, The Former Yugoslav Republic of', '+389'),
-(217, 'FM', 'Micronesia, Federated States of', '+691'),
-(218, 'MD', 'Moldova, Republic of', '+373'),
-(219, 'MZ', 'Mozambique', '+258'),
-(220, 'PS', 'Palestinian Territory, Occupied', '+970'),
-(221, 'PN', 'Pitcairn', '+872'),
-(222, 'RE', 'Réunion', '+262'),
-(223, 'RU', 'Russia', '+7'),
-(224, 'BL', 'Saint Barthélemy', '+590'),
-(225, 'SH', 'Saint Helena, Ascension and Tristan Da Cunha', '+290'),
-(226, 'KN', 'Saint Kitts and Nevis', '+1 869'),
-(227, 'LC', 'Saint Lucia', '+1 758'),
-(228, 'MF', 'Saint Martin', '+590'),
-(229, 'PM', 'Saint Pierre and Miquelon', '+508'),
-(230, 'VC', 'Saint Vincent and the Grenadines', '+1 784'),
-(231, 'ST', 'Sao Tome and Principe', '+239'),
-(232, 'SO', 'Somalia', '+252'),
-(233, 'SJ', 'Svalbard and Jan Mayen', '+47'),
-(234, 'SY', 'Syrian Arab Republic', '+963'),
-(235, 'TW', 'Taiwan, Province of China', '+886'),
-(236, 'TZ', 'Tanzania, United Republic of', '+255'),
-(237, 'TL', 'Timor-Leste', '+670'),
-(238, 'VE', 'Venezuela, Bolivarian Republic of', '+58'),
-(239, 'VN', 'Viet Nam', '+84'),
-(240, 'VG', 'Virgin Islands, British', '+1 284'),
-(241, 'VI', 'Virgin Islands, U.S.', '+1 340');
-
--- --------------------------------------------------------
-
---
--- Структура таблиці `tfa_user_config`
---
-
-CREATE TABLE `tfa_user_config` (
-  `config_id` int(10) UNSIGNED NOT NULL COMMENT 'TFA admin user ID',
-  `user_id` int(10) UNSIGNED NOT NULL COMMENT 'User ID',
-  `encoded_providers` text COMMENT 'Encoded providers list',
-  `encoded_config` text COMMENT 'Encoded providers configuration',
-  `default_provider` varchar(255) DEFAULT NULL COMMENT 'Default provider'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='tfa_user_config';
-
--- --------------------------------------------------------
-
---
 -- Структура таблиці `theme`
 --
 
@@ -10002,7 +9770,8 @@ CREATE TABLE `theme` (
 INSERT INTO `theme` (`theme_id`, `parent_id`, `theme_path`, `theme_title`, `preview_image`, `is_featured`, `area`, `type`, `code`) VALUES
 (1, NULL, 'Magento/blank', 'Magento Blank', 'preview_image_60bbf2e3d4419.jpeg', 0, 'frontend', 0, 'Magento/blank'),
 (2, 1, 'Magento/luma', 'Magento Luma', 'preview_image_60bbf2e3ea69e.jpeg', 0, 'frontend', 0, 'Magento/luma'),
-(3, NULL, 'Magento/backend', 'Magento 2 backend', NULL, 0, 'adminhtml', 0, 'Magento/backend');
+(3, NULL, 'Magento/backend', 'Magento 2 backend', NULL, 0, 'adminhtml', 0, 'Magento/backend'),
+(4, 1, 'My/custom', 'My custom', 'preview_image_60bc7b1c67499.jpeg', 0, 'frontend', 0, 'My/custom');
 
 -- --------------------------------------------------------
 
@@ -10052,6 +9821,18 @@ CREATE TABLE `ui_bookmark` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Bookmark created at',
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Bookmark updated at'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Bookmark';
+
+--
+-- Дамп даних таблиці `ui_bookmark`
+--
+
+INSERT INTO `ui_bookmark` (`bookmark_id`, `user_id`, `namespace`, `identifier`, `current`, `title`, `config`, `created_at`, `updated_at`) VALUES
+(1, 1, 'design_config_listing', 'default', 1, 'Default View', '{\"views\":{\"default\":{\"label\":\"Default View\",\"index\":\"default\",\"editable\":false,\"data\":{\"columns\":{\"default\":{\"visible\":true,\"sorting\":false},\"actions\":{\"visible\":true,\"sorting\":false},\"store_website_id\":{\"visible\":true,\"sorting\":false},\"store_group_id\":{\"visible\":true,\"sorting\":false},\"store_id\":{\"visible\":true,\"sorting\":false},\"theme_theme_id\":{\"visible\":true,\"sorting\":false}},\"filters\":{\"applied\":{\"placeholder\":true}},\"displayMode\":\"grid\",\"paging\":{\"pageSize\":20,\"current\":1},\"positions\":{\"default\":0,\"store_website_id\":1,\"store_group_id\":2,\"store_id\":3,\"theme_theme_id\":4,\"actions\":5}},\"value\":\"Default View\"}}}', '2021-06-05 22:12:13', '2021-06-05 22:12:13'),
+(2, 1, 'design_config_listing', 'current', 0, NULL, '{\"current\":{\"columns\":{\"default\":{\"visible\":true,\"sorting\":false},\"actions\":{\"visible\":true,\"sorting\":false},\"store_website_id\":{\"visible\":true,\"sorting\":false},\"store_group_id\":{\"visible\":true,\"sorting\":false},\"store_id\":{\"visible\":true,\"sorting\":false},\"theme_theme_id\":{\"visible\":true,\"sorting\":false}},\"filters\":{\"applied\":{\"placeholder\":true}},\"displayMode\":\"grid\",\"paging\":{\"pageSize\":20,\"current\":1,\"options\":{\"20\":{\"value\":20,\"label\":20},\"30\":{\"value\":30,\"label\":30},\"50\":{\"value\":50,\"label\":50},\"100\":{\"value\":100,\"label\":100},\"200\":{\"value\":200,\"label\":200}},\"value\":20},\"positions\":{\"default\":0,\"store_website_id\":1,\"store_group_id\":2,\"store_id\":3,\"theme_theme_id\":4,\"actions\":5}}}', '2021-06-05 22:12:15', '2021-06-05 22:12:15'),
+(3, 1, 'design_theme_listing', 'default', 1, 'Default View', '{\"views\":{\"default\":{\"label\":\"Default View\",\"index\":\"default\",\"editable\":false,\"data\":{\"filters\":{\"applied\":{\"placeholder\":true}},\"paging\":{\"pageSize\":20,\"current\":1,\"options\":{\"20\":{\"value\":20,\"label\":20},\"30\":{\"value\":30,\"label\":30},\"50\":{\"value\":50,\"label\":50},\"100\":{\"value\":100,\"label\":100},\"200\":{\"value\":200,\"label\":200}},\"value\":20},\"columns\":{\"theme_id\":{\"visible\":false,\"sorting\":\"asc\"},\"theme_title\":{\"visible\":true,\"sorting\":false},\"parent_theme_title\":{\"visible\":true,\"sorting\":false},\"theme_path\":{\"visible\":true,\"sorting\":false},\"actions\":{\"visible\":true,\"sorting\":false}},\"displayMode\":\"grid\",\"positions\":{\"theme_id\":0,\"theme_title\":1,\"parent_theme_title\":2,\"theme_path\":3,\"actions\":4}},\"value\":\"Default View\"}}}', '2021-06-06 07:37:05', '2021-06-06 07:37:05'),
+(4, 1, 'design_theme_listing', 'current', 0, NULL, '{\"current\":{\"filters\":{\"applied\":{\"placeholder\":true}},\"paging\":{\"pageSize\":20,\"current\":1,\"options\":{\"20\":{\"value\":20,\"label\":20},\"30\":{\"value\":30,\"label\":30},\"50\":{\"value\":50,\"label\":50},\"100\":{\"value\":100,\"label\":100},\"200\":{\"value\":200,\"label\":200}},\"value\":20},\"columns\":{\"theme_id\":{\"visible\":false,\"sorting\":\"asc\"},\"theme_title\":{\"visible\":true,\"sorting\":false},\"parent_theme_title\":{\"visible\":true,\"sorting\":false},\"theme_path\":{\"visible\":true,\"sorting\":false},\"actions\":{\"visible\":true,\"sorting\":false}},\"displayMode\":\"grid\",\"positions\":{\"theme_id\":0,\"theme_title\":1,\"parent_theme_title\":2,\"theme_path\":3,\"actions\":4}}}', '2021-06-06 07:37:06', '2021-06-06 07:37:06'),
+(5, 1, 'cms_block_listing', 'default', 1, 'Default View', '{\"views\":{\"default\":{\"label\":\"Default View\",\"index\":\"default\",\"editable\":false,\"data\":{\"search\":{\"value\":\"\"},\"filters\":{\"applied\":{\"placeholder\":true}},\"columns\":{\"block_id\":{\"visible\":true,\"sorting\":\"asc\"},\"title\":{\"visible\":true,\"sorting\":false},\"identifier\":{\"visible\":true,\"sorting\":false},\"store_id\":{\"visible\":true,\"sorting\":false},\"actions\":{\"visible\":true,\"sorting\":false},\"ids\":{\"visible\":true,\"sorting\":false},\"is_active\":{\"visible\":true,\"sorting\":false}},\"paging\":{\"pageSize\":20,\"current\":1},\"displayMode\":\"grid\"},\"value\":\"Default View\"}}}', '2021-06-06 20:18:53', '2021-06-06 20:18:53'),
+(6, 1, 'cms_block_listing', 'current', 0, NULL, '{\"current\":{\"search\":{\"value\":\"\"},\"filters\":{\"applied\":{\"placeholder\":true}},\"columns\":{\"block_id\":{\"visible\":true,\"sorting\":\"asc\"},\"title\":{\"visible\":true,\"sorting\":false},\"identifier\":{\"visible\":true,\"sorting\":false},\"store_id\":{\"visible\":true,\"sorting\":false},\"actions\":{\"visible\":true,\"sorting\":false},\"ids\":{\"visible\":true,\"sorting\":false},\"is_active\":{\"visible\":true,\"sorting\":false},\"creation_time\":{\"visible\":true,\"sorting\":false},\"update_time\":{\"visible\":true,\"sorting\":false}},\"paging\":{\"pageSize\":20,\"current\":1,\"options\":{\"20\":{\"value\":20,\"label\":20},\"30\":{\"value\":30,\"label\":30},\"50\":{\"value\":50,\"label\":50},\"100\":{\"value\":100,\"label\":100},\"200\":{\"value\":200,\"label\":200}},\"value\":20},\"displayMode\":\"grid\",\"positions\":{\"ids\":0,\"block_id\":1,\"title\":2,\"identifier\":3,\"store_id\":4,\"is_active\":5,\"creation_time\":6,\"update_time\":7,\"actions\":8}}}', '2021-06-06 20:18:55', '2021-06-06 20:18:55');
 
 -- --------------------------------------------------------
 
@@ -13492,20 +13273,6 @@ ALTER TABLE `tax_order_aggregated_updated`
   ADD KEY `TAX_ORDER_AGGREGATED_UPDATED_STORE_ID` (`store_id`);
 
 --
--- Індекси таблиці `tfa_country_codes`
---
-ALTER TABLE `tfa_country_codes`
-  ADD PRIMARY KEY (`country_id`),
-  ADD KEY `TFA_COUNTRY_CODES_CODE` (`code`);
-
---
--- Індекси таблиці `tfa_user_config`
---
-ALTER TABLE `tfa_user_config`
-  ADD PRIMARY KEY (`config_id`),
-  ADD KEY `TFA_USER_CONFIG_USER_ID_ADMIN_USER_USER_ID` (`user_id`);
-
---
 -- Індекси таблиці `theme`
 --
 ALTER TABLE `theme`
@@ -13776,7 +13543,7 @@ ALTER TABLE `adminnotification_inbox`
 -- AUTO_INCREMENT для таблиці `admin_analytics_usage_version_log`
 --
 ALTER TABLE `admin_analytics_usage_version_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Log ID';
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Log ID', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблиці `admin_passwords`
@@ -13794,7 +13561,7 @@ ALTER TABLE `admin_user`
 -- AUTO_INCREMENT для таблиці `admin_user_session`
 --
 ALTER TABLE `admin_user_session`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Entity ID';
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Entity ID', AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблиці `adobe_stock_asset`
@@ -14166,7 +13933,7 @@ ALTER TABLE `checkout_agreement`
 -- AUTO_INCREMENT для таблиці `cms_block`
 --
 ALTER TABLE `cms_block`
-  MODIFY `block_id` smallint(6) NOT NULL AUTO_INCREMENT COMMENT 'Entity ID';
+  MODIFY `block_id` smallint(6) NOT NULL AUTO_INCREMENT COMMENT 'Entity ID', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблиці `cms_page`
@@ -14178,7 +13945,7 @@ ALTER TABLE `cms_page`
 -- AUTO_INCREMENT для таблиці `core_config_data`
 --
 ALTER TABLE `core_config_data`
-  MODIFY `config_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Config ID', AUTO_INCREMENT=29;
+  MODIFY `config_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Config ID', AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT для таблиці `cron_schedule`
@@ -15381,22 +15148,10 @@ ALTER TABLE `tax_order_aggregated_updated`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID';
 
 --
--- AUTO_INCREMENT для таблиці `tfa_country_codes`
---
-ALTER TABLE `tfa_country_codes`
-  MODIFY `country_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'TFA admin user ID', AUTO_INCREMENT=242;
-
---
--- AUTO_INCREMENT для таблиці `tfa_user_config`
---
-ALTER TABLE `tfa_user_config`
-  MODIFY `config_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'TFA admin user ID';
-
---
 -- AUTO_INCREMENT для таблиці `theme`
 --
 ALTER TABLE `theme`
-  MODIFY `theme_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Theme identifier', AUTO_INCREMENT=4;
+  MODIFY `theme_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Theme identifier', AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблиці `theme_file`
@@ -15414,7 +15169,7 @@ ALTER TABLE `translation`
 -- AUTO_INCREMENT для таблиці `ui_bookmark`
 --
 ALTER TABLE `ui_bookmark`
-  MODIFY `bookmark_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Bookmark identifier';
+  MODIFY `bookmark_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Bookmark identifier', AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблиці `url_rewrite`
@@ -16989,12 +16744,6 @@ ALTER TABLE `tax_order_aggregated_created`
 --
 ALTER TABLE `tax_order_aggregated_updated`
   ADD CONSTRAINT `TAX_ORDER_AGGREGATED_UPDATED_STORE_ID_STORE_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`) ON DELETE CASCADE;
-
---
--- Обмеження зовнішнього ключа таблиці `tfa_user_config`
---
-ALTER TABLE `tfa_user_config`
-  ADD CONSTRAINT `TFA_USER_CONFIG_USER_ID_ADMIN_USER_USER_ID` FOREIGN KEY (`user_id`) REFERENCES `admin_user` (`user_id`) ON DELETE CASCADE;
 
 --
 -- Обмеження зовнішнього ключа таблиці `theme_file`
