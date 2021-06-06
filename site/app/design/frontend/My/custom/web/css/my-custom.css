@@ -1,0 +1,8 @@
+#more {
+    display: none;
+}
+
+#my-table-block th,
+#my-table-block td {
+    border: 1px solid #e8e8e8 !important;
+}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: mysql:3306
--- Час створення: Чрв 06 2021 р., 20:43
+-- Час створення: Чрв 06 2021 р., 21:16
 -- Версія сервера: 5.7.34
 -- Версія PHP: 7.4.20
 
@@ -137,7 +137,7 @@ CREATE TABLE `admin_user` (
 --
 
 INSERT INTO `admin_user` (`user_id`, `firstname`, `lastname`, `email`, `username`, `password`, `created`, `modified`, `logdate`, `lognum`, `reload_acl_flag`, `is_active`, `extra`, `rp_token`, `rp_token_created_at`, `interface_locale`, `failures_num`, `first_failure`, `lock_expires`, `refresh_token`) VALUES
-(1, 'admin', 'admin', 'admin@admin.com', 'admin', '0cba738c41dff73130198d83bbf9dab6627261c81606ba697179120d21c585dd:eNkE2cE11Uw2mNJNIE1s7Dl2dxIXleRg:3_32_2_67108864', '2021-06-05 21:55:56', '2021-06-06 20:39:46', '2021-06-06 20:39:46', 5, 0, 1, NULL, NULL, NULL, 'en_US', 0, NULL, NULL, NULL);
+(1, 'admin', 'admin', 'admin@admin.com', 'admin', '0cba738c41dff73130198d83bbf9dab6627261c81606ba697179120d21c585dd:eNkE2cE11Uw2mNJNIE1s7Dl2dxIXleRg:3_32_2_67108864', '2021-06-05 21:55:56', '2021-06-06 20:57:41', '2021-06-06 20:57:41', 6, 0, 1, NULL, NULL, NULL, 'en_US', 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -175,7 +175,8 @@ INSERT INTO `admin_user_session` (`id`, `session_id`, `user_id`, `status`, `crea
 (2, '92989ac854409a540bfb629b3a1de4a6', 1, 1, '2021-06-06 07:30:45', '2021-06-06 07:42:45', '172.19.0.1'),
 (3, 'e5800cfeea83c1327c94e661c96fdcb1', 1, 1, '2021-06-06 09:23:51', '2021-06-06 09:25:54', '172.19.0.1'),
 (4, '3c9310dcdf90b7b398234a3e04f59e8d', 1, 1, '2021-06-06 20:13:00', '2021-06-06 20:24:32', '172.19.0.1'),
-(5, 'd09570af5e55d5644c7b28a780a3ee04', 1, 1, '2021-06-06 20:39:46', '2021-06-06 20:40:44', '172.19.0.1');
+(5, 'd09570af5e55d5644c7b28a780a3ee04', 1, 1, '2021-06-06 20:39:46', '2021-06-06 20:40:44', '172.19.0.1'),
+(6, 'c000e4f35ff77d1b411188a5aed45d37', 1, 1, '2021-06-06 20:57:41', '2021-06-06 21:04:14', '172.19.0.1');
 
 -- --------------------------------------------------------
 
@@ -2152,7 +2153,7 @@ CREATE TABLE `cms_block` (
 --
 
 INSERT INTO `cms_block` (`block_id`, `title`, `identifier`, `content`, `creation_time`, `update_time`, `is_active`) VALUES
-(1, 'MyTableBlock', 'myTableBlock', '<table class=\"my-table-block\" style=\"border-collapse: collapse; width: 100%;\" border=\"1\">\r\n<tbody>\r\n<tr>\r\n<td style=\"width: 50%;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&nbsp;</td>\r\n<td style=\"width: 50%;\">t enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 50%;\">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.&nbsp;</td>\r\n<td style=\"width: 50%;\">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>\r\n</tr>\r\n</tbody>\r\n</table>', '2021-06-06 20:23:10', '2021-06-06 20:40:44', 1);
+(1, 'MyTableBlock', 'myTableBlock', '<table id=\"my-table-block\" style=\"border-collapse: collapse; width: 100%;\" border=\"1\">\r\n<tbody>\r\n<tr>\r\n<td style=\"width: 50%;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&nbsp;</td>\r\n<td style=\"width: 50%;\">t enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>\r\n</tr>\r\n<tr>\r\n<td style=\"width: 50%;\">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.&nbsp;</td>\r\n<td style=\"width: 50%;\">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>\r\n</tr>\r\n</tbody>\r\n</table>', '2021-06-06 20:23:10', '2021-06-06 21:04:15', 1);
 
 -- --------------------------------------------------------
 
@@ -13561,7 +13562,7 @@ ALTER TABLE `admin_user`
 -- AUTO_INCREMENT для таблиці `admin_user_session`
 --
 ALTER TABLE `admin_user_session`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Entity ID', AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Entity ID', AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблиці `adobe_stock_asset`
